@@ -15,15 +15,15 @@
 
 内部パラメータの最適化には，**最小二乗法**が最も使われる．
 すなわち，入力を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/>，
-モデルを<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G"/>，
-出力を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G(x)"/>と置いたとき，
+モデルを<img src="https://latex.codecogs.com/gif.latex?\dpi{110}&space;\small&space;G"/>，
+出力を<img src="https://latex.codecogs.com/gif.latex?\dpi{110}&space;\small&space;G(x)"/>と置いたとき，
 
 　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}||x-G(x)||^2_2"/>
     
 を最小化するように内部パラメータを調整する．
 入力<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/>としてどのような特徴量を設定するか，あるいは内部パラメータに対する拘束条件を何か付与するか，
 がこの手法における大きな研究課題である．
-最も単純なモデルとして，入力 x と雑音が定常であり，無限時間観測であることを仮定したものが**ウィナーフィルタ**である．さらに入力・雑音の定常性の仮定を廃し，時系列の変化を考慮したシステム（=**線形動的システム**）を導入したものが**カルマンフィルタ**である．
+最も単純なモデルとして，入力と雑音が定常であり，無限時間観測であることを仮定したものが**ウィナーフィルタ**である．さらに入力・雑音の定常性の仮定を廃し，時系列の変化を考慮したシステム（=**線形動的システム**）を導入したものが**カルマンフィルタ**である．
 現在ある様々な音声強調手法のほとんどが，このウィナーフィルタとカルマンフィルタに基づき開発されている．
 
 さて，ベイスの枠組みから観ると，この最小二乗法は雑音の生成分布を正規分布と仮定した場合の**最尤推定**と一致する．
@@ -52,7 +52,7 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 
 　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}x=s+w"/>
     
-音声強調を行う関数を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G" />と置くと，雑音混入音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x" />と出力音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y" />との間に
+音声強調を行う関数を<img src="https://latex.codecogs.com/gif.latex?\dpi{110}&space;\small&space;G" />と置くと，雑音混入音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x" />と出力音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y" />との間に
 
 　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}y=G(x)"/>
     
@@ -67,7 +67,7 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;w"/>  : 雑音信号 のサンプル値  
 　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/> : 入力信号（雑音混入音声）のサンプル値  
 　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y"/> : 出力信号 のサンプル値  
-　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G"/> : 音声強調モデル  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{110}&space;\small&space;G"/> : 音声強調モデル  
 　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;\epsilon"/> : 推定誤差  
     
 である．音声強調の研究において，音声強調モデル G としてどのようなモデルを用いるかが重要な課題となる．
@@ -95,30 +95,30 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 
 音声強調モデル G を設計するにあたり，まず信号復元の仕組みを**ベイズ推定**に当てはめて考える．
 
-    y = argmax_s p( s | G, x ) 
+　　<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}&space;\small&space;y={\rm&space;argmax}_s&space;\&space;p(s|G,x)"/>
     
-    p( s | G, x ) = p( G, x | s ) p( s ) / p( x )     ：ベイズの定理
+　　<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}&space;\small&space;p(s|G,x)=\frac{p(G,x|s)&space;p(s)}{p(x)}" title="\small p(s|G,x)=\frac{p(G,x|s) p(s)}{p(x)}" />
 
 ここで，
 
-    - p( s | G, x ) : 事後分布．G, x が発生したときのその原因が s である確率分布．
-    - p( G, x | s ) : 尤度．s を原因として G, x が発生する確率分布．
-    - p( s )          : 事前分布．s が生成される確率分布．
-    - p( x )          : 周辺分布．x が生成される確率分布．
+　　- <img src="https://latex.codecogs.com/gif.latex?\small&space;p(s|G,x)" />　: 事後分布．G, x が発生したときのその原因が s である確率分布．  
+　　- <img src="https://latex.codecogs.com/gif.latex?\small&space;p(G,x|s)" />　: 尤度．s を原因として G, x が発生する確率分布．  
+　　- <img src="https://latex.codecogs.com/gif.latex?\small&space;p(s)" />　: 事前分布．s が生成される確率分布．  
+　　- <img src="https://latex.codecogs.com/gif.latex?\small&space;p(x)" />　: 周辺分布．x が生成される確率分布．  
 
 である．
-ベイズ推定は，下の式にある事後分布 p( s | G, x ) を推定することである．
+ベイズ推定は，下の式にある事後分布<img src="https://latex.codecogs.com/gif.latex?\small&space;p(s|G,x)" />を推定することである．
 事後分布さえ推定できれば，上の式から未知量 y = s を推定することができる．
 
 音声強調の観点から説明すると，ベイズ推定は「音声強調関数 G と 雑音混入音声 x から，それらの原因が原音声 s である確率分布を求める」ことである．
 
 ## MAP推定
 
- x が s と独立であると仮定すると，周辺分布 p(x) は s と独立した確率分布となり，
+ x が s と独立であると仮定すると，周辺分布<img src="https://latex.codecogs.com/gif.latex?\small&space;p(x)" />は s と独立した確率分布となり，
  y の推定に寄与しないことがわかる．
-したがって，実際に y を推定する際には p(x) を無視して，
+したがって，実際に y を推定する際には<img src="https://latex.codecogs.com/gif.latex?\small&space;p(x)" />を無視して，
  
-    y = argmax_s  p( G, x | s ) p( s )
+　　<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}y={\rm&space;argmax}_s&space;\&space;p(G,x|s)p(s)"/>
 
 を解くことになる．
 この推定の枠組みを最大事後確率推定（=**MAP推定**）と呼ぶ．
@@ -127,8 +127,8 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 さらに尤度を s の発生確率で補正し，尤度が最大となる s の値を最終的な出力信号 y をとして推定する．」
 ことである．
 
-式からわかるように，**事後分布 p( G, x | s ) と事前分布 p( s ) が設定できれば，MAP推定を用いることができる**．
-ここで事前分布 p( s ) は推定量 s のデータ分布であり，事前に適当に決定しておく必要がある．
+式からわかるように，**事後分布 p(G, x | s) と事前分布 p(s) が設定できれば，MAP推定を用いることができる**．
+ここで事前分布<img src="https://latex.codecogs.com/gif.latex?\small&space;p(s)" />は推定量 s のデータ分布であり，事前に適当に決定しておく必要がある．
 
 原音声 s の生成分布を一様分布と仮定すると，MAP推定は最尤推定に一致する．
 また， s の生成分布がラプラスに従うと仮定して，STSA法により音声強調を行う手法(Joint MAP法)もある．
@@ -143,7 +143,7 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 この場合，周辺分布と事前分布を未知 = 定数 とみなして，
 MAP推定における p( s ) を無視して
 
-     y = argmax_s p( G, x | s )
+　　<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}y={\rm&space;argmax}_s&space;\&space;p(G,x|s)"/>
  
 とすればよい．この推定法を**最尤推定**と呼ぶ．
 事前分布を定数とみなすことは，無限に平坦な分布を仮定することと等しい．
@@ -152,13 +152,13 @@ MAP推定における p( s ) を無視して
 そこで現在でも事前分布をどう仮定するか様々な研究がなされている．
 
 > まとめ：
->
+>　　
 > 1.  ベイズ推定     
 >
 >       事後分布 p( x | y ) を推定する．  
 >       または，事後分布から未知量 x ，あるいは事前分布（= 未知量の確率分布 p( x ) ）を推定する．
 >
->       p( x | y ) = p( y | x ) p( x )  /  p( y )
+>       <img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;p(x|y)=\frac{p(y|x)p(x)}{p(y)}" title="\small p(x|y)=\frac{p(y|x)p(x)}{p(y)}" />
 >  
 >  
 > 2.  MAP推定   
@@ -166,18 +166,19 @@ MAP推定における p( s ) を無視して
 >       事後分布 p( x | y ) を最大化する未知量 x を推定値とする．  
 >       ベイズの枠組みにおいて，周辺尤度 p( y )（= 観測データ y の生成分布）を無視する．
 >
->       x' = argmax_x p( x | y ) = argmax_s p( y | x ) p( x )   
->
->       ∵ p( x | y ) =  p( y | x ) p( x )  / p( y ) ∝  p( y | x ) p( x ) 
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(x|y)={\rm&space;argmax}_x&space;\&space;p(y|x)p(x)"/>  
+>  
+>  　
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\because&space;p(x|y)=\frac{p(y|x)p(x)}{p(y)}\propto&space;p(y|x)p(x)" title="\small \because p(x|y)=\frac{p(y|x)p(x)}{p(y)}\propto p(y|x)p(x)" />
 >
 > 3.  最尤推定  
 >
 >       尤度 p( x | s ) を最大化する未知量 s を推定値 y とする．  
 >       ベイズの枠組みにおいて，周辺尤度を無視し，事前分布を一様分布と仮定する．
 >       
->       x' = argmax_x p( x | y ) = argmax_x p( y | x )
->  
->       ∵ p( s ) =  const.
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(x|y)={\rm&space;argmax}_x&space;\&space;p(y|x)"/>  
+> 　
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\because&space;p(x)=\rm&space;const" />
 >  
 >  
 > 3.  最小二乗解（=MMSE推定）  
@@ -185,7 +186,7 @@ MAP推定における p( s ) を無視して
 >       推定未知量 x' と 未知量 x の平均二乗誤差を計算し，最小となる x' を推定値とする．  
 >       ベイズの枠組みにおいて，周辺尤度を無視し，事前分布を一様分布と仮定し，事後分布を正規分布と仮定する．
 >
->       x' = argmin_x'  Σ ( x' - x )^2
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmin_\hat{x}}&space;\&space;E&space;\left[||\hat{x}-x||^2_2&space;\right]" title="\small \hat{x}={\rm argmin_\hat{x}} \ E \left[||\hat{x}-x||^2_2 \right]" />
 >
 
 ### 補足２：Joint MAP 法 (MMSE-STSA法ベース) [[link](https://pdfs.semanticscholar.org/6e39/5084f54260ad90299c33d229aea6a840c873.pdf)]
