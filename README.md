@@ -166,7 +166,7 @@ MAP推定における p( s ) を無視して
 >       事後分布 p( x | y ) を最大化する未知量 x を推定値とする．  
 >       ベイズの枠組みにおいて，周辺尤度 p( y )（= 観測データ y の生成分布）を無視する．
 >
->　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(x|y)={\rm&space;argmax}_x&space;\&space;p(y|x)p(x)"/>  
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(y|x)p(x)"/>  
 >  
 >  　
 >　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\because&space;p(x|y)=\frac{p(y|x)p(x)}{p(y)}\propto&space;p(y|x)p(x)" title="\small \because p(x|y)=\frac{p(y|x)p(x)}{p(y)}\propto p(y|x)p(x)" />
@@ -176,7 +176,7 @@ MAP推定における p( s ) を無視して
 >       尤度 p( x | s ) を最大化する未知量 s を推定値 y とする．  
 >       ベイズの枠組みにおいて，周辺尤度を無視し，事前分布を一様分布と仮定する．
 >       
->　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(x|y)={\rm&space;argmax}_x&space;\&space;p(y|x)"/>  
+>　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\hat{x}={\rm&space;argmax}_x&space;\&space;p(y|x)"/>  
 > 　
 >　　<img src="https://latex.codecogs.com/gif.latex?\fn_phv&space;\small&space;\because&space;p(x)=\rm&space;const" />
 >  
