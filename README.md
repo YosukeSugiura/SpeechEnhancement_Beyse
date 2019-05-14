@@ -8,18 +8,20 @@
 音声強調アルゴリズムを設計するには，まず入出力の関係を数理モデルで表す必要がある．
 すなわち，入力を x ，出力を y としたとき，
 
-    y = G( x ) 
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y=G(x)" title="\small y=G(x)" />
 
 で表される音声強調モデル G を考える必要がある．
 一般の音声強調では，モデル G を**線形システム**と考えることが多い．
 
 内部パラメータの最適化には，**最小二乗法**が最も使われる．
-すなわち，入力を x，モデルを G，出力を G( x ) と置いたとき，
+すなわち，入力を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/>，
+モデルを<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G"/>，
+出力を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G(x)"/>と置いたとき，
 
-    || x - G( x ) ||^2_2 
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}||x-G(x)||^2_2"/>
     
 を最小化するように内部パラメータを調整する．
-入力 x としてどのような特徴量を設定するか，あるいは内部パラメータに対する拘束条件を何か付与するか，
+入力<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/>としてどのような特徴量を設定するか，あるいは内部パラメータに対する拘束条件を何か付与するか，
 がこの手法における大きな研究課題である．
 最も単純なモデルとして，入力 x と雑音が定常であり，無限時間観測であることを仮定したものが**ウィナーフィルタ**である．さらに入力・雑音の定常性の仮定を廃し，時系列の変化を考慮したシステム（=**線形動的システム**）を導入したものが**カルマンフィルタ**である．
 現在ある様々な音声強調手法のほとんどが，このウィナーフィルタとカルマンフィルタに基づき開発されている．
@@ -46,27 +48,27 @@ MAP推定は入力信号の生成分布を加味できるので，音声強調�
 
 ## 音声強調モデル
 
-ここでは，雑音混入音声 x を原音声 s と加法性雑音 w の加算で表す．
+ここでは，雑音混入音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/>を原音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;s" />と加法性雑音<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;w" />の加算で表す．
 
-    x = s + w
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}x=s+w"/>
     
-音声強調を行う関数を G と置くと，雑音混入音声 x と出力音声 y との間に
+音声強調を行う関数を<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G" />と置くと，雑音混入音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x" />と出力音声<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y" />との間に
 
-    y = G( x ) 
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}y=G(x)"/>
     
 という関係がある．y は原音声との間に
     
-    s = y + e
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}y=s+\epsilon"/>
 
-という関係がある．e は推定誤差である．
+という関係が成り立つ．<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}&space;\small&space;\epsilon"/>は推定誤差である．
 ここで変数をまとめると，
 
-    - s : 所望信号（原音声）のサンプル値
-    - w : 雑音信号 のサンプル値
-    - x : 入力信号（雑音混入音声）のサンプル値
-    - y : 出力信号 のサンプル値
-    - G : 音声強調モデル
-    - e : 推定誤差
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;s"/>  : 所望信号（原音声）のサンプル値  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;w"/>  : 雑音信号 のサンプル値  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;x"/> : 入力信号（雑音混入音声）のサンプル値  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y"/> : 出力信号 のサンプル値  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;G"/> : 音声強調モデル  
+　　- <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;\epsilon"/> : 推定誤差  
     
 である．音声強調の研究において，音声強調モデル G としてどのようなモデルを用いるかが重要な課題となる．
 
