@@ -217,14 +217,14 @@ Joint MAP法をベースに音声生成モデルを時変にした音声強調�
 
 MAP推定の式を再掲する．
 
-    y = argmax_s  p( G, x | s ) p( s )
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;y={\rm&space;argmax_s}&space;\&space;p(G,x|s)p(s)" title="\small y={\rm argmax_s} \ p(G,x|s)p(s)" />
     
 MAP推定においては，事前分布 p( s ) を設定する他に，尤度 p( G, x | s ) を設計する必要がある．
 音声強調において尤度 p( G, x | s ) は「原音声 s に起因して 雑音混入音声 x と音声処理関数 G が生成される確率」を表している．
 誤差信号 e = s - G( x ) が正規分布に従うと仮定した場合，音声強調結果 G(x) は真の音声 s の周りで正規分布を形成するはずである．
 したがって，尤度は以下の式のようにおくことができる．
 
-     p( G, x | s ) = q exp(  -| G( x ) - s |^2 / 2σ^2  )
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;p(G,x|s)=q\exp\left(\frac{-|G(&space;x&space;)-s|^2}{2\sigma^2}\right)" title="\small p(G,x|s)=q\exp\left(\frac{-|G( x )-s|^2}{2\sigma^2}\right)" />
 
 ここで σ^2 は誤差信号の分散である．q は分散に起因する定数であるが，MAP推定では推定に寄与しない．
 この関数は，G( x ) = s のときに最大値をとる．
