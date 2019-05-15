@@ -238,9 +238,7 @@ Gの内部パラメータを学習する必要がある．
 今，学習用の原音声 <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;\hat{s}" title="\small \hat{s}" /> と雑音混入音声 <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\small&space;\hat{x}" title="\small \hat{x}" /> のデータセットを用いて学習するとする．
 このときの G の事後分布は
 
-    <!--p(G|\hat{x},\hat{s})=p(\hat{x},\hat{s},G)p(G)-->
-
-     G = argmax_G p( s | G, x ) = argmax_G p( G, x | s ) p( s )
+　　<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\small&space;p(G|\hat{x},\hat{s})=p(\hat{x},\hat{s},G)p(G)" title="\small p(G|\hat{x},\hat{s})=p(\hat{x},\hat{s},G)p(G)" />
 
 左辺に対して対数を取ることで，次式に書き換えられる．
 
